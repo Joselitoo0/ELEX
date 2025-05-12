@@ -1,0 +1,25 @@
+autoinstall:
+  version: 1
+  identity:
+    hostname: DeepSeek
+    username: Jose
+    password: "af7d364368f5a4739695e34bbb286665919fcafa49b1a9cd5dca68f3dfb12c3cf98e6d1451d1e9ecfbb7d31fb6b58a176a5612db27b00c0bd00c5180183582b5"
+  storage:
+    layout:
+      name: zfs
+  snaps:
+    - name: spotify
+      classic: false
+    - name: telegram-desktop
+      classic: false
+    - name: obsidian
+      classic: true
+    - name: code
+      classic: true
+  packages:
+    - vim
+  late-commands:
+    - curtin in-target -- wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+    - curtin in-target -- dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb
+    - curtin in-target -- apt update
+    - curtin in-target -- apt install -y proton-vpn-gnome-desktop
